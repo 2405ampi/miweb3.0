@@ -1,13 +1,19 @@
-from django.shortcuts import render
-from .models import Alumno
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Libro, Alumno
+from .forms import LibroForm, AlumnoForm
 
-# Create your views here.
 def index(request):
-    alumnos = Alumno.objects.all()
-    print(alumnos)
-    return render(request, 'index.html', {'alumnos': alumnos})
-def pagina1(request):
-    return render(request, 'pagina1.html')
+    total_libros = Libro.objects.count()
+    total_alumnos = Alumno.objects.count()
+    return render(request, 'index.html', {
+        'total_libros': total_libros,
+        'total_alumnos': total_alumnos
+    })
 
-def pagina2(request):
-    return render(request, 'pagina2.html')
+def lista_libros(request):
+    libros = Libro.objects.all()
+    return render(request, 'lista_libros.html', {'libros': libros})
+
+def lista_alumnos(request):
+    alumnos = Alumno.objects.all()
+    return render(request, 'lista_alumnos.html', {'alumnos': alumnos})

@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
+
 urlpatterns = [
-    path('', views.index, name='index'), # URL raíz para la aplicación biblioteca
-    path('pagina1/', views.pagina1, name='pagina1'), # URL para una vista de libros
-    path('pagina2/', views.pagina2, name='pagina2'), # URL con parámetro
+    path('', views.index, name='index'),
+    path('libros/', views.lista_libros, name='lista_libros'),
+    path('alumnos/', views.lista_alumnos, name='lista_alumnos'),
 ]
